@@ -39,12 +39,6 @@ DARK = "#123f7a"
 # Platform tag labels are shown as the platform wrote them
 
 
-
-
-def zh_label(text):
-    return str(text)
-
-
 def _frame(fig, title, source):
     fig.text(0.012, 0.975, title, fontsize=15, color=INK2, va="top")
     if source:
