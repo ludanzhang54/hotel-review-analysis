@@ -1,0 +1,5 @@
+pandas>=2.1
+openpyxl
+matplotlib
+# optional: convert traditional-Chinese reviews to simplified
+# opencc-python-reimplemented

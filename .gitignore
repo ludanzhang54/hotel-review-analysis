@@ -1,0 +1,8 @@
+*_state.json
+__pycache__/
+*.pyc
+.DS_Store
+my_project/
+*.xlsx
+*/图表/
+examples/sample_project/图表/
