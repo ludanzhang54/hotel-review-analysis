@@ -1,5 +1,5 @@
-// 把报告网页转成 A4 PDF（用户要 PDF 时用）：node scripts/to_pdf.js <报告.html 的绝对路径> <输出.pdf>
-// 需要 playwright 和 Chromium；"依据""为什么"会全部展开；按 0.68 缩放，用电脑版排版。
+// Turn the report page into an A4 PDF (when the user wants a PDF): node scripts/to_pdf.js <absolute path of report.html> <output.pdf>
+// Needs playwright and Chromium; "Evidence" and "Why" are all expanded; scaled to 0.68, desktop layout.
 const { chromium } = require('playwright');
 (async () => {
   const [src, out] = process.argv.slice(2);
@@ -7,7 +7,7 @@ const { chromium } = require('playwright');
   const p = await b.newPage({ viewport: { width: 1100, height: 1400 }, colorScheme: 'light' });
   await p.goto('file://' + src, { waitUntil: 'networkidle' });
   await p.evaluate(() => {
-    document.querySelectorAll('details').forEach(d => d.open = true);  // 依据、为什么全部展开
+    document.querySelectorAll('details').forEach(d => d.open = true);  // expand Evidence and Why
     const s = document.createElement('style');
     s.textContent = `@page { size: A4; margin: 12mm 10mm; }
       body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }

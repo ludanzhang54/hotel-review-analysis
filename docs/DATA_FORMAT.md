@@ -11,7 +11,7 @@ All files live in one data folder per hotel (keep it outside this repository).
            "text_disliked": null}]}
 ```
 
-- `platform` must be exactly one of `携程`, `Trip.com`, `Booking.com`, `Agoda`, `Expedia`, `美团`, `飞猪` (the platform names are used as keys).
+- `platform` must be exactly one of `Ctrip`, `Trip.com`, `Booking.com`, `Agoda`, `Expedia`, `Meituan`, `Fliggy` (the platform names are used as keys).
 - `score` on the platform's own scale; `score_scale` is that scale (5 or 10).
 - `text_disliked`: Booking.com's separate "dislike" paragraph, if the platform has one.
 

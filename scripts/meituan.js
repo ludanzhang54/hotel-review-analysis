@@ -1,15 +1,15 @@
-// 美团酒店点评抓取（手机版点评页）
-// 前提：用户本人已在同一个浏览器里登录美团（手机号 + 验证码）。不要替用户登录。
-// 页面：https://i.meituan.com/poi/美团酒店编号/feedbacks （编号从美团酒店搜索结果进入详情页后，网址里的 poiId=数字）
-//   浏览器要用手机尺寸打开（电脑版酒店页会被拒绝访问）。
-// 用法（每一页都这样做，慢慢翻）：
-//   1. 打开第 1 页，运行整段代码，再运行 MeituanReviews.savePage()：读出这一页，存到浏览器里，返回已存条数。
-//   2. 运行 MeituanReviews.next()：点"下一页"。等页面打开后至少再等 10 秒，重复第 1 步（重新运行整段代码 + savePage）。
-//   3. 最后一页 next() 返回 "已经是最后一页"。运行 MeituanReviews.dump(0, 50)、dump(50, 100)…… 分段取出，存成 reviews_meituan_zh.json。
-// 注意：不要用脚本连续请求翻页地址，美团会限流（返回 403 拒绝访问）。被限流就停下，过一段时间再接着翻，已存的不会丢。
-// 读不到昵称以外的身份信息；昵称不保存。
+// Meituan hotel review collector (mobile review page)
+// Prerequisite: the user has signed in to Meituan in the same browser (phone number + code). Never sign in for the user.
+// Page: https://i.meituan.com/poi/<Meituan hotel id>/feedbacks (the id is poiId=number in the address after opening a hotel from the Meituan hotel search results)
+//   Open the browser at a phone size (the desktop hotel page is refused).
+// Usage (do this for every page, slowly):
+//   1. Open page 1, run the whole code, then MeituanReviews.savePage(): reads this page, stores it in the browser, returns the stored count.
+//   2. Run MeituanReviews.next(): clicks "next page". After the page opens wait at least 10 more seconds, then repeat step 1 (run the whole code again + savePage).
+//   3. On the last page next() returns "already the last page". Run MeituanReviews.dump(0, 50), dump(50, 100)... to take the rows out in parts and save as reviews_meituan_zh.json.
+// Note: do not request page addresses in a row by script; Meituan rate-limits (403 refused). If limited, stop, wait a while and go on; what is stored is not lost.
+// No identity information is read except the nickname, and the nickname is not saved.
 (() => {
-  // 按美团酒店编号分开存，连着分析两家酒店也不会混在一起
+  // stored per Meituan hotel id, so analysing two hotels in a row does not mix them
   const poi = (location.pathname.match(/poi\/(\d+)/) || [])[1] || "unknown";
   const KEY = "rs_meituan_" + poi;
   const load = () => { try { return JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { return []; } };
@@ -21,35 +21,35 @@
       review_language: "zh", score, score_scale: 5,
       date: (c.querySelector(".time") || {}).textContent || null,
       traveler_type: "", room_type: "", reviewer_country: "", title: "",
-      // 长点评被折叠在 .feedbackmore 里，textContent 会连同折叠部分一起读出
+      // long reviews are folded in .feedbackmore; textContent reads the folded part too
       text: cm ? cm.textContent.replace(/\s+/g, " ").trim() : "",
     };
   });
   window.MeituanReviews = {
-    reset() { localStorage.removeItem(KEY); return "已清空"; },
+    reset() { localStorage.removeItem(KEY); return "cleared"; },
     summary() {
       const t = document.body.innerText;
       const total = (t.match(/评价\s*(\d+)/) || [])[1];
-      const tags = [...t.matchAll(/^([^\n\d]{2,8}) (\d+)$/gm)].map((m) => ({ 话题: m[1].trim(), 提及次数: +m[2] }))
-        .filter((x) => !/^(评价|晒图)$/.test(x.话题));
+      const tags = [...t.matchAll(/^([^\n\d]{2,8}) (\d+)$/gm)].map((m) => ({ topic: m[1].trim(), mentions: +m[2] }))
+        .filter((x) => !/^(评价|晒图)$/.test(x.topic));
       return { total_reviews: total ? +total : null, topics: tags, note: location.href };
     },
     savePage() {
-      if (/403/.test(document.title)) return "被限流（403），先停下，过一段时间再从这一页继续";
+      if (/403/.test(document.title)) return "rate-limited (403): stop, wait a while, then continue from this page";
       const have = load();
       const seen = new Set(have.map((r) => r.date + r.text.slice(0, 40)));
       const rows = parse().filter((r) => !seen.has(r.date + r.text.slice(0, 40)));
       localStorage.setItem(KEY, JSON.stringify(have.concat(rows)));
-      return `这一页新增 ${rows.length} 条，共 ${have.length + rows.length} 条`;
+      return `${rows.length} new on this page, ${have.length + rows.length} in total`;
     },
     next() {
       const a = [...document.querySelectorAll("a")].find((x) => x.textContent.trim() === "下一页");
-      if (!a || /disabled/.test(a.className)) return "已经是最后一页";
+      if (!a || /disabled/.test(a.className)) return "already the last page";
       a.click();
-      return "已点下一页，页面打开后再等 10 秒";
+      return "clicked next page; wait 10 more seconds after it opens";
     },
     count() { return load().length; },
     dump(from, to) { return JSON.stringify(load().slice(from, to)); },
   };
-  return "MeituanReviews 已就绪";
+  return "MeituanReviews ready";
 })();

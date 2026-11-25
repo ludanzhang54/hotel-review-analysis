@@ -56,7 +56,7 @@ dump("reviews_tripcom_en.json", "Trip.com", "en", make(30, "Trip.com", "en", EN_
 dump("reviews_booking_en.json", "Booking.com", "en", make(40, "Booking.com", "en", EN_GOOD, EN_BAD, TYPES_EN, 10))
 
 (out / "summary.json").write_text(json.dumps({
-    "hotel": "Harbour View Hotel (sample)", "not_listed": ["Expedia"], "not_included": ["某音"],
+    "hotel": "Harbour View Hotel (sample)", "not_listed": ["Expedia"], "not_included": ["short-video platform"],
     "platforms": {
         "Trip.com": {"rating": 9.1, "scale": 10, "total_reviews": 120, "all_reviews_scraped": True,
                      "subscores": {"Cleanliness": 9.3, "Amenities": 9.0, "Location": 9.4, "Service": 9.1}},

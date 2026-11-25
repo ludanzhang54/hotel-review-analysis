@@ -5,7 +5,7 @@
  * by running it in the browser (AI browser tool or developer console), then call:
  *
  *   await ReviewScraper.listLanguages()
- *       -> [{code: "zh-CN", label: "简体中文", count: null}, ...]
+ *       -> [{code: "zh-CN", label: "Simplified Chinese (as the page shows it)", count: null}, ...]
  *   await ReviewScraper.collect({language: "zh-CN", maxReviews: 40, sort: "newest", pageDelayMs: 3000})
  *       -> {platform, hotel, url, language, rows: [...]}
  *

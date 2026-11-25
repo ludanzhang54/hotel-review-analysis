@@ -4,12 +4,12 @@
 
 ![report preview](examples/sample_project/report_preview.png)
 
-*The sample above uses invented data for a fictional hotel. The report is written in Chinese (see "Language" below).*
+*The sample above uses invented data for a fictional hotel. The report, Excel and charts are in English; review text stays in its original language.*
 
 ## What it does
 
 - **One combined rating** weighted by each platform's published review count (Ctrip and Trip.com are the same reviews, counted once)
-- **Complaint themes**: 12 fixed themes in Chinese and English (noise, repairs, hygiene, staff, breakfast, "booking info does not match reality" and more), counted only where guests are unhappy
+- **Complaint themes**: 12 fixed themes with Chinese and English keywords (noise, repairs, hygiene, staff, breakfast, "booking info does not match reality" and more), counted only where guests are unhappy
 - **What guests praise**, with basics (service, cleanliness) separated from real selling points
 - **Main guest groups** and what each group mentions most, as the basis for listing copy
 - **Low-score reviews one by one** (cause, what the hotel did, result), and whether a problem keeps coming back
@@ -22,11 +22,11 @@ Design choices: low score = below 6 out of 10 (below 3 out of 5), no "good/mediu
 ## Quick start (no account needed)
 
 ```bash
-pip install -r requirements.txt            # pandas, openpyxl, matplotlib (a Chinese font is needed for charts)
+pip install -r requirements.txt            # pandas, openpyxl, matplotlib (a CJK font is needed so Chinese review text and room types show in charts)
 python tests/test_core.py                  # should end with the all-passed line
 python scripts/analyze.py examples/sample_project
 python scripts/report.py  examples/sample_project
-# open examples/sample_project/点评报告_*.html in your browser
+# open examples/sample_project/review_report_*.html in your browser
 ```
 
 PDF (optional): `npm i playwright`, then `node scripts/to_pdf.js <absolute path to the .html> <output.pdf>`.
@@ -49,7 +49,7 @@ If your hotel is not on a platform, the report says "not found this time, to be 
 
 ## Language
 
-Review keywords cover Chinese and English. The report, Excel and charts are written in Chinese, and some code comments are still in Chinese. To produce another language, translate the labels in `scripts/analyze.py`, `scripts/charts.py` and `scripts/report.py`. Pull requests are welcome.
+Review keywords cover Chinese and English. The report, Excel and charts are written in English; the Chinese keyword lists in `scripts/analyze.py` are needed to read Chinese reviews. To produce another output language, translate the labels in `scripts/analyze.py`, `scripts/charts.py` and `scripts/report.py`. Pull requests are welcome.
 
 ## Risks, in plain words
 
@@ -84,7 +84,7 @@ four-star hotel in a tier-3 city into a profitable one.
 - Email: ludanzhang54@gmail.com
 - YouTube (Chinese-language videos and podcast): https://www.youtube.com/@TheHotelBusiness
 - Podcast, English: *The Hotel Business* - https://rss.com/podcasts/the-hotel-business/
-- Podcast, Chinese: *张小姐看酒店生意* - https://www.youtube.com/playlist?list=PLK66NvWFLv9U
+- Podcast, Chinese: *张小姐看酒店生意* ("Hotel Business with Ms. Zhang") - https://www.youtube.com/playlist?list=PLK66NvWFLv9U
 
 ## Licence
 
