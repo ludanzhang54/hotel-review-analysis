@@ -86,6 +86,7 @@ four-star hotel in a tier-3 city into a profitable one.
 - Podcast, English: *The Hotel Business* - https://rss.com/podcasts/the-hotel-business/
 - Podcast, Chinese: *张小姐看酒店生意* ("Hotel Business with Ms. Zhang") - https://www.youtube.com/playlist?list=PLK66NvWFLv9U
 - Podcast on Apple Podcasts (Chinese): https://podcasts.apple.com/cn/podcast/id6819124585
+- Podcast on Ximalaya (Chinese): https://www.ximalaya.com/album/121727130
 
 ## Licence
 
