@@ -61,24 +61,21 @@ Pull requests are welcome: fixes when a platform changes its page, other platfor
 
 ## About the author
 
-**Oriental Horizon Hotel Services** is a hotel management and consulting company. The founder is a hotel revenue
-leader with 13 years in international hotel groups (Hilton, IHG, Accor, Hyatt) across Southeast Asia and China, a former
-Director of Revenue at a five-star hotel in Singapore, and the head of a company that turned a loss-making
-four-star hotel in a tier-3 city into a profitable one.
+**Oriental Horizon Hospitality** helps hotels and the people who run them do better business, in China, Southeast Asia and beyond. The founder has 13 years in hotel revenue management with Hilton, IHG, Accor and Hyatt, and was Director of Revenue at a five-star hotel in Singapore.
 
-**Who we help**: hotel owners and hotel professionals (revenue, sales, marketing and general managers) who face a problem at work, especially at international brand and group hotels, where our own experience runs deepest.
+**What we do**
 
-**What we can help with**
+- **Consulting**: business diagnosis, pricing and distribution for independent and branded hotels
+- **Hands-on coaching**: we work alongside owners and teams until the changes actually work
+- **Training**: practical training open to anyone in hospitality, from owners and hotel teams to students, including how to use AI in daily work
+- **Open source**: free AI skills for hotels, open for anyone to use and adapt
 
-- **Hotel business consulting**: how to get your hotel's business going and growing. We find where the business is strong and weak and what to do about it
-- **OTA channel consulting**: how your hotel sells on the booking platforms, and how to improve it
-- **AI for hotels**: we help your team put AI into daily operations, through training or by building the tools for you
-- **Hands-on coaching**: we work alongside you and your team over time until the results show, not just hand over a report
-- **Training**: courses on hotel business and AI, open to owners, hotel staff and students
+**Operating track record**: our company took over a four-star hotel in a tier-3 Chinese city and turned an annual loss of about RMB 1.8M into a profit of about RMB 2M the following year. The founder also ran a seaside guesthouse that was the market leader in its local market for five consecutive years.
 
 **Free consultation: tell us your situation and we will tell you honestly whether we can help.**
 
 - LinkedIn: https://www.linkedin.com/in/ludan-zhang54/
+- GitHub: https://github.com/ludanzhang54
 - WeChat: Oriental_Horizon
 - WhatsApp: +65 86796635
 - Email: ludanzhang54@gmail.com

@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for helping. This project is maintained by Oriental Horizon Hotel Services.
+Thank you for helping. This project is maintained by Oriental Horizon Hospitality.
 
 ## Ways to help
 
