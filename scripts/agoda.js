@@ -153,6 +153,7 @@
       for (const left of document.querySelectorAll(".Review-comment-left")) {
         const row = parseCard(left.parentElement, lang);
         const key = [row._dedup, row.date, row.text.slice(0, 80)].join("|");
+        delete row._dedup;  // the reviewer name is never written to the output
         if (!row.text || seen.has(key)) continue;
         seen.add(key);
         rows.push(row);
